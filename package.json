@@ -1,0 +1,30 @@
+{
+  "name": "somemodlessomedata",
+  "version": "1.0.0",
+  "description": "Web app for testing different models on different datasets",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node ./server/index.js"
+  },
+  "keywords": [
+    "data",
+    "models",
+    "math",
+    "machine",
+    "learning",
+    "data",
+    "science"
+  ],
+  "author": "Viktor A Terizev",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "jquery": "^3.3.1",
+    "path": "^0.12.7",
+    "popper.js": "^1.14.1",
+    "python-shell": "^0.5.0",
+    "uniqid": "^4.1.1"
+  }
+}
