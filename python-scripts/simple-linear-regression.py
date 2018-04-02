@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import sys
 import pandas
 
-def main(p):
-    pathtocsv = 'H:/Projects/some-models-some-data/uploaded-datasets/' + p
+def main(datasetpath, img_path, p):
+    pathtocsv = dataset_path + p
     filename = p[:-4]
 
     df = pandas.read_csv(pathtocsv)
@@ -20,22 +20,25 @@ def main(p):
     Yprediction = a*X + b
 
     # how good is the model ?   
-    #d1 = Y - Yprediction
-    #d2 = Y - Y.mean()
-    #SSres = d1.dot(d1)
-    #SStot = d2.dot(d2)
+    d1 = Y - Yprediction
+    d2 = Y - Y.mean()
+    SSres = d1.dot(d1)
+    SStot = d2.dot(d2)
 
-    # RSq = 1 - SSres / SStot # the closest to 1 the better (0.9911 in this case)
+    RSq = 1 - SSres / SStot # the closest to 1 the better (0.9911 in this case)
 
     plt.scatter(X, Y, label='exprected (real values)', color='blue')
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.plot(X, Yprediction, label='prediction (ax+b)', color='red')
     plt.legend()
-    plt.savefig('H:/Projects/some-models-some-data/public/img/' + filename + '.png')
+    plt.savefig(img_path + filename + '.png')
     print(filename + '.png')
+    print(RSq)
 
-p = sys.argv[1]
+dataset_path = sys.argv[1]
+img_path = sys.argv[2]
+csv = sys.argv[3]
 
-if(p != 'undefined' and p != 'undefined\r'):
-    main(p)
+if(csv != 'undefined' and csv != 'undefined\r' and dataset_path != 'undefined' and dataset_path != 'undefined\r' and img_path != 'undefined'):
+    main(dataset_path, img_path, csv)

@@ -8,7 +8,7 @@ module.exports = (app, db, path) => {
     // default options
     app.use(fileUpload());
 
-    app.post('/upload', (req, res) => {
+    app.post('/simple-linear-regresstion', (req, res) => {
 
         if (!req.files) {
             res.status(400).send('No files were uploaded.');
@@ -34,4 +34,8 @@ module.exports = (app, db, path) => {
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname + '/..' + '/public' + '/index.html'));
     });
+
+    app.get('/simple-linear-regression', (req, res) => {
+        res.status(200).sendFile(path.join(__dirname + '/..' + '/public' + '/html' + '/simple-linear-regression.html'));
+    })
 }
