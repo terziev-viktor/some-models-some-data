@@ -4,7 +4,7 @@ import sys
 import pandas
 
 def main(p):
-    pathtocsv = 'H:/Projects/somemodlessomedata/uploaded-datasets/' + p
+    pathtocsv = 'H:/Projects/some-models-some-data/uploaded-datasets/' + p
     filename = p[:-4]
 
     df = pandas.read_csv(pathtocsv)
@@ -32,8 +32,8 @@ def main(p):
     plt.ylabel("Y")
     plt.plot(X, Yprediction, label='prediction (ax+b)', color='red')
     plt.legend()
-    plt.savefig('H:/Projects/somemodlessomedata/public/img/' + filename + '.png')
-
+    plt.savefig('H:/Projects/some-models-some-data/public/img/' + filename + '.png')
+    print(filename + '.png')
 
 p = sys.argv[1]
 

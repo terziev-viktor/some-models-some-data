@@ -1,4 +1,4 @@
-const uniqid = require('uniqid')
+const uniqid = require('uniqid');
 
 module.exports = class Database {
 
@@ -6,20 +6,25 @@ module.exports = class Database {
     // config must contain savelocation prop
     constructor(config) {
         this.config = config;
+        
+        this.SaveFile = (file) => {
 
-        this.SaveFile = (file, cb) => {
             if(file.truncated) {
-                cb(false, {msg: 'file is over the size limit'});
+                throw 'file truncated';
             } else {
                 let newfilename = uniqid() + file.name;
                 let savepath = this.config.savelocation + '\\' + newfilename;
                
                 file.mv(savepath, (err) => {
-                    cb(false, {msg: 'Could not save the file', err: err});
+                    if(err) {
+                        console.log('------------------err----------------------');
+                        console.log(err);
+                        console.log('------------------------------------------');
+                        throw err;
+                    }
                 });
                 
-                // sending the file location for debug purpuses
-                cb(true, {msg: 'File saved!', savelocation: savepath, filename: newfilename });
+                return { savelocation: savepath, filename: newfilename }
             }
         }
     }

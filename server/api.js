@@ -1,51 +1,37 @@
 
-module.exports = (app, db, python, path) => {
+;
+
+module.exports = (app, db, path) => {
     const fileUpload = require('express-fileupload');
+    let Q = require('q');
 
     // default options
     app.use(fileUpload());
-    
+
     app.post('/upload', (req, res) => {
-        
+
         if (!req.files) {
             res.status(400).send('No files were uploaded.');
         }
-        
+
         let dataset = req.files.csv;
-
-        db.SaveFile(dataset, (good, info) => {
-            // simple linear regression only ! (for now)
-
-            // if(!good) {
-            //     return res.status(500).send(info.msg);
-            // }
-            let dataset = info.filename;
-            let pathtoscripts = path.join(__dirname + '/../' + 'python-scripts');
-            console.log('dataset:');
-            console.log(dataset);
-            args = []
-            args.push(dataset);
-
-            let options = {
-                mode: 'text',
-                scriptPath: pathtoscripts,
-                args: args
-            }
-            python.run('simple-linear-regression.py', options, (err, results) => {
-                console.log('python.run() return values:');
+        Q.fcall(db.SaveFile, dataset)
+            .then(values => {
+                return simple_linear_regression(values.filename);
+            })
+            .then(values => {
+                return res.status(200).sendFile(path.join(__dirname + '/..' + '/public' + '/uploaded.html'));
+            })
+            .catch(err => {
+                console.log('-------------err-------------------');
                 console.log(err);
-                console.log(results);
-            });
-        });  
-        res.status(200).send('OK');     
+                console.log('-----------------------------------');
+                return res.status(500).sendFile(__dirname + '/..' + '/public' + '/error.html');
+            })
+            .done();
     });
 
-    app.get('/upload', (req, res) => {
-        //res.sendFile(path.join(__dirname + '/../' + '/public' + 'uploaded.html'));
-    })
-    
-    // routes
     app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname + '/../' + '/public' + '/index.html'));
+        res.sendFile(path.join(__dirname + '/..' + '/public' + '/index.html'));
     });
 }
