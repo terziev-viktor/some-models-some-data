@@ -12,37 +12,49 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/std.css">
-
-    <!-- Some free fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
     <div class="overlay">
-        <h1>Some Models Some Data</h1>
-        <p class="lobster">Train different models on different data</p>
-        <div class="btn-wrap" onclick="openNav()">
-            <a class="actionbtn">Lets Do This!</a>
-        </div>
+        <h1>Train A Simple Linear Regression Model!</h1>
+        <p class="lobster">Choose a dataset below</p>
+        <p class="lobster">It has to be a
+            <strong>.csv</strong> file with 2 columns:</p>
+        <ul class="lobster">
+            <li>> The first should be "X" followed by values for "X"</li>
+            <li>> The second should be "Y" followed by values of Y for every given X</li>
+        </ul>
     </div>
-    <div id="models_sidenav" class="sidenav">
-        <h3>Choose your model</h3>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/simple-linear-regression">Simple Linear Regression</a>
-        <a href="/linear-regression-gradient-descent">Linear Regression With Gradient Descent</a>
-        <a href="#">Multi(Poly) Linear Regression</a>
-        <a href="#">Multi(Poly) Linear Regression With Gradient Descent</a>
-    </div>
-
-    <div>
-        <button >Lets Do THIS !</button>
-    </div>
-
-
-
 </body>
+
+<div id="main">
+    <form ref='uploadForm' id='uploadForm' action='/simple-linear-regresstion' method='post' encType="multipart/form-data">
+        <div class="form-group">
+            <div class="upload-btn-wrapper">
+                <button class="btn">Choose A Dataset</button>
+                <input type="file" name="csv" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type='submit' value='Upload!' class="actionbtn" />
+        </div>
+    </form>
+
+    <!-- <form action="/">
+        <div class="form-group">
+            <div class="">
+                
+                <input type="file" name="myfile" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="upload">
+        </div>
+    </form> -->
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
