@@ -1,9 +1,11 @@
-module.exports = (python, path) => {
+module.exports = (python, path, Q) => {
     const uploaded_datasets_path = path.join(__dirname + '/../' + 'uploaded-datasets/'),
     img_path = path.join(__dirname + '/../' + 'public' + '/img/'),
     python_scripts_path = path.join(__dirname + '/../' + 'python-scripts');
 
     simple_linear_regression = (csv) => {
+        let deffered = Q.defer();
+
         let dataset = csv;
         args = []
         args.push(uploaded_datasets_path);
@@ -18,13 +20,14 @@ module.exports = (python, path) => {
 
         python.run('simple-linear-regression.py', options, (err, results) => {
             if(err) {
-                throw err;
+                deffered.reject(err);
             }
-            console.log('--------results of python script------- ');
-            console.log(results);
-            console.log('----------------------------------------');
-            return results;
+            else
+            {
+                deffered.resolve(results);
+            }
         });
+        return deffered.promise;
     }
 
     simple_linear_regression_gradient_descent = (csv) => {

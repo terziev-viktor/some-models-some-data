@@ -1,0 +1,33 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Some Models Some Data
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+        link(rel="stylesheet", href="public/css/std.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:400,700,900")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Source+Code+Pro")
+
+    body
+        div(class="overlay")
+            h1 Train A Simple Linear Regression Model!
+            p(class='lobster') Choose a dataset below
+            p(class='lobster') It has to be a <strong>.csv</strong> file with 2 colums:
+            ul(class="lobster")
+                li &gt; The first should be "X" followed by values for "X"
+                li &gt; The second should be "Y" followed by values of Y for every given X
+            
+            div(id="main")
+                form(ref='uploadForm', id='uploadForm', action='/simple-linear-regression', method="post", encType="multipart/form-data")
+                    div(class="form-group")
+                        div(class="upload-btn-wrapper")
+                            button(class='btn') Choose A Dataset
+                            input(type="file", name="csv")
+                    div(class="form-group")
+                        input(type="submit", value="Upload!", class="actionbtn")
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
+    script(src="public/js/std.js")

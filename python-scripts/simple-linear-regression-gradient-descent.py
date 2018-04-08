@@ -40,4 +40,4 @@ def main():
     plt.plot(X, a*X + b, label='line of best fit', color='blue')
     plt.legend()
     plt.savefig(img_path + csv_file_name + '.png')
-    plt.show()
+    print(csv_file_name + '.png')

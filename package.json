@@ -22,9 +22,11 @@
     "express": "^4.16.3",
     "express-fileupload": "^0.4.0",
     "jquery": "^3.3.1",
+    "npm": "^5.8.0",
     "path": "^0.12.7",
     "popper.js": "^1.14.1",
     "promise": "^8.0.1",
+    "pug": "^2.0.3",
     "python-shell": "^0.5.0",
     "q": "^1.5.1",
     "uniqid": "^4.1.1"

@@ -1,0 +1,32 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Some Models Some Data
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+        link(rel="stylesheet", href="public/css/std.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:400,700,900")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Source+Code+Pro")
+
+    body
+        div(class="overlay")
+            h1 Some Models Some Data
+            p(class="lobster") Train Different Models on Different Datasets
+            div(class="btn-wrap center-all", onclick="openNav()")
+                a(href="#", class="actionbtn") Lets Do This!
+
+        div(id="models_sidenav", class="sidenav")
+            h3 Choose your Model
+            a(href="javascript:void(0)", class="closebtn", onclick="closeNav()") &times;
+            a(href="/simple-linear-regression") Simple Linear Regression
+            a(href="/linear-regression-gradient-descent") Linear Regression With Gradient Descent
+            a(href="#") Multi(Poly) Linear Regression
+            a(href="#") Multy(Poly) Linear Regression with Gradient Descent
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
+    script(src="public/js/std.js")
+
+        
